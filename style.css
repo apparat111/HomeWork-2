@@ -1,0 +1,61 @@
+
+#pult {
+  width: 180px; /* Ширина слоя */ 
+  height: 300px;
+  float: left; /* Состыковка с соседним слоем */ 
+  padding: 10px; /* Поля вокруг текста */ 
+  border: 3px solid #d6e9c6;
+  color: #CC5500; /* Цвет текста*/ 
+  background-color: #dff0d8;  /* Цвет фона левой колонки */ 
+   
+ }
+
+ 
+#tvset {
+  width: 200px;
+  height: 100px;
+  /*float: left;*/
+  margin-left:100px;
+  padding: 10px;
+  border: 3px solid #d6e9c6;
+  color: #FFD700;
+  background-color: #dff000;
+  /*top: 10px; 
+  left: 70px; */
+  float: left;
+
+  }
+
+ 
+#heater {
+  width: 200px;
+  height: 100px;
+  float: left;
+  /* margin-left:200px;*/
+  padding: 10px;
+  border: 3px solid #d6e9c6;
+  color: black;
+  background-color: grey;
+  /*top: 10px; 
+  left: 70px; */
+  float: left;
+
+  }
+ 
+
+#light {
+  width: 200px;
+  height: 100px;
+  float: left;
+  /* margin-left:200px;*/
+  padding: 10px;
+  border: 3px solid #d6e9c6;
+  color: #FFD700;
+  background-color: black;
+  /*top: 10px; 
+  left: 70px; */
+  float: left;
+
+  }
+
+
