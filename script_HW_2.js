@@ -1,16 +1,15 @@
 "use strict";
 
 function receiver (model) {   // constructor
-		  
 		this._model  = model;
         this._state  = 'off';
 		this._channel = 1;	 
 		this._volume = 20;
-						
-this.model = function () {
+}				
+receiver.prototype.model = function () {
       return this._model;
    }
-this.power = function () {
+receiver.prototype.power = function () {
       if (this._state === 'on') {
 		 this._state = 'off'; 
 	  }else {
@@ -18,99 +17,96 @@ this.power = function () {
 	  }
 	}
 
-this.state = function () {
+receiver.prototype.state = function () {
       return this._state;
 	}	
-this.increaseVolume = function () {
+receiver.prototype.increaseVolume = function () {
       this._volume = this._volume + 10;
 	if (this._volume > 100) {
 		this._volume = 100;
 	}
 		}
-this.decreaseVolume = function () {
+receiver.prototype.decreaseVolume = function () {
       this._volume = this._volume - 10;
 	if (this._volume < 0) {
 		this._volume = 0;
 	}
 		}	
-this.Volume = function () {
+receiver.prototype.Volume = function () {
 	return this._volume ;
 }
-this.increaseChannel = function () {
+receiver.prototype.increaseChannel = function () {
       this._channel = this._channel + 1;
 	if (this._channel > 100) {
 		this._channel = 100;
 	}
 		}
-this.decreaseChannel = function  () {
+receiver.prototype.decreaseChannel = function  () {
       this._channel = this._channel - 1;
 	if (this._channel < 1) {
 		this._channel = 1;
 	}
 		}	
-this.Channel = function () {
+receiver.prototype.Channel = function () {
 	return this._channel ;
 	}
-}
+
 
 
 
 function climat (model) {   // constructor
-		  
 		this._model  = model;
         this._state  = 'off';
 		this._temp = 22;	 
-						
-this.model = function () {
+}				
+climat.prototype.model = function () {
       return this._model;
    }
-this.on = function () {
+climat.prototype.on = function () {
       this._state = 'on';
 	}
-this.off = function () {
+climat.prototype.off = function () {
       this._state = 'off';
 	}
-this.state = function () {
+climat.prototype.state = function () {
       return this._state;
 	}	
-this.increaseTemp = function () {
+climat.prototype.increaseTemp = function () {
       this._temp = this._temp + 1;
 	if (this._temp > 29){
 		this._temp = 29
 	}
 	}
-this.decreaseTemp  = function () {
+climat.prototype.decreaseTemp  = function () {
       this._temp = this._temp - 1;
 	if (this._temp < 18){
 		this._temp = 18
 	}
 	}	
-this.Temp = function () {
+climat.prototype.Temp = function () {
 	return this._temp ;
 	}
 
-}
 
 
 function switchable (model) {   // constructor
-		 
 		this._model  = model;
         this._state  = 'off';
-								
-this.model = function () {
+}						
+switchable.prototype.model = function () {
       return this._model;
    }
-this.on = function () {
+switchable.prototype.on = function () {
       this._state = 'on';
 	}
-this.off = function () {
+switchable.prototype.off = function () {
       this._state = 'off';
 	}
-this.state = function () {
+switchable.prototype.state = function () {
       return this._state;
 	}	
 
-}
+
 
 
 //// end  constructors section
@@ -119,9 +115,7 @@ this.state = function () {
 
 var roomLamp = new switchable ('ЛАМПА');
 
-//console.log (roomLamp.model ());
-//roomLamp.on()
-//console.log (roomLamp.state ());
+
 
 
 function roomLampStateCheck () {
