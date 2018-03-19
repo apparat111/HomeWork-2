@@ -7,14 +7,14 @@
 
 <link rel="stylesheet" type="text/css" href="style.css" />
 
-<body bgcolor=#FFFFFF text=black link=blue vlink=#00FF00 alink=red >
+<body bgcolor=#DCDCDC text=black link=blue vlink=#00FF00 alink=red >
 
 <font color=black face="Times Roman">
 
   <p>ВАРИАНТ УМНОГО ДОМА</p>
   
 <form>
- <div align="center" id="pult"> ПУЛЬТ ДУ
+ <div align="center" id="pult" class="pult" > ПУЛЬТ ДУ
   	<p></p>
 	<table>
          <caption>ТЕЛЕВИЗОР</caption>
@@ -54,7 +54,10 @@
             <td><input type="button" ID="light_on" name="light_on" value="LIGHT ON "/></td>
             <td><input type="button" ID="light_off" name="light_off" value="LIGHT OFF"/></td>  
          </tr>
-         
+         <tr>
+            <td><input type="button" ID="add_lamp" name="add_lamp"  value="ADD LAMP"/></td>
+            <td><input type="button" ID="del_lamp" name="del_lamp"  value="DEL LAMP"/></td>
+         </tr>
 		 
       </table>
 	
@@ -64,18 +67,18 @@
   </form>
   
     
-  <div align="center" id="tvset">
+   <div align="center" id="tvset" class="tvset">
    <font color=black face="Arial"> ТЕЛЕВИЗОР
   </div>
   
-    <div id="heater" id="heater">
+    <div  id="heater" class="heater" >
    <font color=black face="Arial"> ОТОПЛЕНИЕ
   </div>
-	
-	<div id="light" id="light"> ОСВЕЩЕНИЕ
+	<!--
+	<div id="light" class="light"> ОСВЕЩЕНИЕ
    <font color=black face="Arial">
   </div>
-	
+	-->
   
   <script src="script_HW_2.js"></script>
 

@@ -89,9 +89,10 @@ climat.prototype.Temp = function () {
 
 
 
-function switchable (model) {   // constructor
+function switchable (model, id) {   // constructor
 		this._model  = model;
         this._state  = 'off';
+		this._id = id;
 }						
 switchable.prototype.model = function () {
       return this._model;
@@ -106,6 +107,9 @@ switchable.prototype.state = function () {
       return this._state;
 	}	
 
+switchable.prototype.id = function () {
+      return this._id;
+   }
 
 
 
@@ -113,38 +117,95 @@ switchable.prototype.state = function () {
 
 // create lamp
 
-var roomLamp = new switchable ('ЛАМПА');
+
+    var lampsArray = [];
+	var name = ' ЛАМПА MAXUS ';
+	var id;     /// for future use ))) should not be visible by the user )
+	
+	id = 'lampId=' + lampsArray.length;
+	lampsArray[lampsArray.length] = new switchable (name, id);
 
 
-
-
-function roomLampStateCheck () {
+function lampStateChange () {
+		
 	
 	document.getElementById("light_on").onclick = function(){
-	roomLamp.on ();
-	roomLampView ()
-	}
+	
+	for (var z = 0 ; z < lampsArray.length; z++) {
+		lampsArray[z].on();
+	};
+	lampView ();
+};
+		
 	document.getElementById("light_off").onclick = function(){
-	roomLamp.off ();
-	roomLampView ()
+	
+	for (var j = 0 ; j < lampsArray.length; j++) {
+		lampsArray[j].off();
+	};
+	lampView ();
+};
+	
+	document.getElementById("add_lamp").onclick = function(){
+	    
+	var id;
+	id = 'lampId=' + lampsArray.length;
+	lampsArray[lampsArray.length] = new switchable (name, id);
+	
+	lampView ();
+	
 	}
+	
+	document.getElementById("del_lamp").onclick = function(){
+	lampsArray.splice((lampsArray.length - 1 ), 1);
+		
+	lampView ();
+	}
+	
 }
+
 	
-roomLampStateCheck ();
+lampStateChange ();
 
 
-function roomLampView () {
+function lampView () {
+		
+	var arrDelelems = document.querySelectorAll('.light');
+		
+	if (arrDelelems[0] !== undefined) {
 	
-	if (roomLamp.state () === 'on') {
-	var lampState = ' ВКЛ ';
-	document.getElementById('light').style.backgroundColor = 'white';	
-	} else {
-	var lampState = ' ВЫКЛ ';
-	document.getElementById('light').style.backgroundColor = 'black';	
+		for( let k = 0; k < arrDelelems.length ; k++) { //arrDelelems.length
+		let tempElem = arrDelelems[k];
+		tempElem.parentNode.removeChild(tempElem);
+		}
+	}
+		
+		
+	for ( let i = 0 ; i < lampsArray.length ; i++ ) {
+			     
+		if (lampsArray[i].state () === 'on') {
+			var lampState = ' ВКЛ ';
+			var bdColor = '#F0E68C';
+				} else {
+					var lampState = ' ВЫКЛ ';
+					var bdColor = 'black';
 	}
 	
-	document.getElementById('light').innerHTML =` название = ${roomLamp.model ()} <br> состояние = ${lampState} `;
-}	
+  
+  var lampDiv = document.createElement('div');
+  lampDiv.className = 'light';
+  lampDiv.title = 'redheat';
+  lampDiv.style.backgroundColor = bdColor ;
+  lampDiv.accessKey = 'lampa'; ///
+  lampDiv.innerHTML = `${lampsArray[i].model ()} <br>  ${lampsArray[i].id ()} <br> ${lampState} `;
+  document.body.appendChild(lampDiv);
+ 	
+		
+	console.log (lampsArray[i]); // так красивее
+	}
+	console.log ( ' === --- === ');
+	  	
+	
+};
 	
 
 
@@ -155,26 +216,24 @@ function roomLampView () {
 
 var heater = new climat ('BOSCH'); /// create heater
 
-//console.log (heater);
-
 
 function heaterStateCheck () {
 	
 	document.getElementById("heat_on").onclick = function(){
 	heater.on ();
-	heaterView ()
+	heaterView ();
 	}
 	document.getElementById("heat_off").onclick = function(){
 	heater.off ();
-	heaterView ()
+	heaterView ();
 	}
 	document.getElementById("temp_up").onclick = function(){
 	heater.increaseTemp ();
-	heaterView ()
+	heaterView ();
 	}
 	document.getElementById("temp_down").onclick = function(){
 	heater.decreaseTemp ();
-	heaterView ()
+	heaterView ();
 	}
 	
 }
@@ -186,17 +245,16 @@ function heaterView (){
 	
 	if (heater.state () === 'on') {
 	var showState = ' ВКЛ ';
-	document.getElementById('heater').style.backgroundColor = 'red';	
+	document.getElementById('heater').style.backgroundColor = '#B22222';	
 	} else {
 	var showState = ' ВЫКЛ';
-	document.getElementById('heater').style.backgroundColor = 'grey';	
+	document.getElementById('heater').style.backgroundColor = '#0A0A0A';	
 	}
 	
 	document.getElementById('heater').innerHTML =` название = ${heater.model ()} <br>
 	состояние = ${showState} <br> уст. температура = ${heater.Temp()}`;
 		
-	//document.getElementById('heater').innerHTML =` название = ${heater.model ()} <br>
-	//состояние = ${heater.state()} <br> уст. температура = ${heater.Temp()}`;
+	
 	}
 
 
@@ -212,24 +270,24 @@ function tvSetStateCheck () {
 	
 	document.getElementById("tv_power").onclick = function(){
 	tvSet.power ();
-	tvSetView ()
+	tvSetView ();
 	}
 	document.getElementById("tv_ch_up").onclick = function(){
 	tvSet.increaseChannel ();
-	tvSetView ()
+	tvSetView ();
 	}
 	document.getElementById("tv_ch_down").onclick = function(){
 	tvSet.decreaseChannel ();
-	tvSetView ()
+	tvSetView ();
 	}
 	
 	document.getElementById("tv_vol_down").onclick = function(){
 	tvSet.decreaseVolume();
-	tvSetView ()
+	tvSetView ();
 	}
 	document.getElementById("tv_vol_up").onclick = function(){
 	tvSet.increaseVolume ();
-	tvSetView ()
+	tvSetView ();
 	}
 	
 	
@@ -243,7 +301,7 @@ function tvSetView (){
 	
 	if (tvSet.state () === 'on') {
 	var showtvSetState = ' ВКЛЮЧЕНО ';
-	document.getElementById('tvset').style.backgroundColor = '#E6FEFF' ;	
+	document.getElementById('tvset').style.backgroundColor = '#87CEEB' ;	
 	} else {
 	var showtvSetState = ' ВЫКЛЮЧЕНО ';
 	document.getElementById('tvset').style.backgroundColor = 'black';	
@@ -255,12 +313,10 @@ function tvSetView (){
 	
 	}
 
-
-
-
+	
 
 document.body.onload = function () {
-roomLampView ();
+lampView ();
 heaterView ();
 tvSetView ();	
 }

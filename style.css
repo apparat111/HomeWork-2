@@ -1,24 +1,24 @@
 
-#pult {
-  width: 180px; /* Ширина слоя */ 
-  height: 300px;
+.pult {
+  width: 190px; /* Ширина слоя */ 
+  height: 330px;
   float: left; /* Состыковка с соседним слоем */ 
   padding: 10px; /* Поля вокруг текста */ 
-  border: 3px solid #d6e9c6;
-  color: #CC5500; /* Цвет текста*/ 
-  background-color: #dff0d8;  /* Цвет фона левой колонки */ 
+  border: 3px solid #800080;
+  color: #FF4500; /* Цвет текста*/ 
+  background-color: #FFFFE0;  /* Цвет фона левой колонки */ 
    
  }
 
  
-#tvset {
+.tvset {
   width: 200px;
   height: 100px;
   /*float: left;*/
   margin-left:100px;
   padding: 10px;
-  border: 3px solid #d6e9c6;
-  color: #FFD700;
+  border: 2px solid #00FF00;
+  color: #FF0000;
   background-color: #dff000;
   /*top: 10px; 
   left: 70px; */
@@ -27,15 +27,15 @@
   }
 
  
-#heater {
+.heater {
   width: 200px;
   height: 100px;
   float: left;
   /* margin-left:200px;*/
   padding: 10px;
-  border: 3px solid #d6e9c6;
-  color: black;
-  background-color: grey;
+  border: 2px solid #00FF00;
+  color: #FFFF00;
+  background-color: black;
   /*top: 10px; 
   left: 70px; */
   float: left;
@@ -43,19 +43,19 @@
   }
  
 
-#light {
+.light {
   width: 200px;
   height: 100px;
   float: left;
   /* margin-left:200px;*/
   padding: 10px;
-  border: 3px solid #d6e9c6;
-  color: #FFD700;
-  background-color: black;
+  border: 2px solid #00FF00;
+  color: #0000FF;
+   background-color: black;
   /*top: 10px; 
   left: 70px; */
   float: left;
-
+		
   }
 
 
